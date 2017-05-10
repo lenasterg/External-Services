@@ -20,14 +20,26 @@ cd External-Services
 cp .env.example .env
 ```
 
-Lets run [composer](https://getcomposer.org/) to fetch our dependencies. Also give the storage directory write permissions.
-
+Now we to make the directory cache into the bootstrap and give write permissions. Also give the storage directory write permissions.
 ```
-composer install
+mkdir bootstrap/cache
+chmod -R 0777 bootstrap/cache/
 chmod -R 0777 storage/
 ```
 
-Now that we have the code lets configure the app. Open up the .env file and edit your database settings. Run the following commands to populate your db
+Lets run [composer](https://getcomposer.org/) to fetch our dependencies. 
+
+```
+composer install
+```
+
+Now lets generate our key. Run the following command
+```
+php artisan key:generate
+```
+and type 'yes' if prompt. 
+
+Now that we have the code and key lets configure the app. Open up the .env file and edit your database settings. Run the following commands to populate your db
 
 ```
 php artisan migrate
